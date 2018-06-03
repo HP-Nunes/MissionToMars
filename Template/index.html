@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scrapping Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+    <div class = "container">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+        </div>
+
+        <div class = "row row-grid">
+            <div class="row">
+                <div class = "col-xs-10 col-md-offset-4">               
+                        <h2>Latest Mars News</h2>
+                        <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest">(courtesy of NASA Mars Exploration Program)</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-9">               
+                    <div class="box box-left">
+                        <h2>Featured Mars Image of the Day</h2>
+                        <!-- <img src= {{ img_url }} width: 50% /> -->
+                        <a href="https://www.jpl.nasa.gov/spaceimages/">(courtesy of NASA Jet Propulsion Laboratory)</a>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="box box-right"> 
+                        <h2>Mars Weather Forecast</h2>
+                        <a href="https://twitter.com/MarsWxReport">(courtesy of @MarsWxReport)</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="row">
+            <div class="col-xs-9"></div>               
+                <div class="col-xs-3">
+                    <div class="box box-right"> 
+                        <h2>Mars Fact</h2>
+                        <a href="https://space-facts.com/mars/">(courtesy of Space Facts)</a>
+                    </div>
+                </div>    
+            </div>
+            
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

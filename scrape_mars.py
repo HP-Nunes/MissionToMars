@@ -14,7 +14,7 @@ def index():
 
 @app.route("/scrape")
 def scraper():
-    listings = mongo.db.mars
+    mars = mongo.db.mars
     mars_data = mission_to_mars.scrape()
     mars.update(
         {},
