@@ -37,12 +37,10 @@ def scrape():
             teaser = nasa_news_result.find('div', class_="article_teaser_body").text
             
         mars_news_dict = {"title": title, "teaser": teaser}
-        mars_news_report = mars_news_report.append(mars_news_dict)
-        mars_data["news"] = build_report(mars_news_report)
+        mars_data["news"] = mars_news_report.append(mars_news_dict)
             
 #********************************************************************************************************************************************************************************************************************************************************
     # ## JPL Mars Space Images - Featured Image
-
 
     featured_image_url = "/?search=&category=Mars"
     nasa_img_url = 'https://www.jpl.nasa.gov/spaceimages'+featured_image_url
@@ -52,23 +50,18 @@ def scrape():
     nasa_img_soup = bs(nasa_img_html, 'html.parser')
     img=nasa_img_soup.find_all('a',class_="fancybox")[1]
     img_url = img['data-thumbnail']
-    img_url = "https://www.jpl.nasa.gov" + img_url
+    mars_data["image"] = "https://www.jpl.nasa.gov" + img_url
     console.log(img_url)
-    
-    mars_data["image"] = build_report(img_url)
 
 #********************************************************************************************************************************************************************************************************************************************************
     # ## Mars Weather
-
 
     twi_MarsWxReport_url = "/marswxreport?lang=en" 
     nasa_twi_url = 'https://twitter.com'+twi_MarsWxReport_url
     browser.visit(nasa_twi_url)
 
-    tweet_text = browser.find_by_xpath('.//p[@class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]')[0].text
+    mars_data["tweet_forecast"] = browser.find_by_xpath('.//p[@class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]')[0].text
     console.log(tweet_text)
-    
-    mars_data["tweet_forecast"] = build_report(tweet_text)
 
 #********************************************************************************************************************************************************************************************************************************************************
     # ## Mars Facts
@@ -76,10 +69,9 @@ def scrape():
     marsFactext_url = "/mars/" 
     marsFact_url = 'https://space-facts.com'+marsFactext_url
     browser.visit(marsFact_url)
-    marsFacts_table = browser.find_by_xpath('.//table[@class="tablepress tablepress-id-mars"]').text
+    mars_data["MarsFact_table"] = browser.find_by_xpath('.//table[@class="tablepress tablepress-id-mars"]').text
     console.log(marsFacts_table)
     
-    mars_data["MarsFact_table"] = build_report(marsFacts_table)
 
         # https://stackoverflow.com/questions/22604564/how-to-create-a-pandas-dataframe-from-a-string
     #     import sys
@@ -120,17 +112,9 @@ def scrape():
             pass
 
         marsHems_dict = {"title": title, "img_url": marsHems_rooturl+img_url}
-        marsHems_report = mars_news_report.append(marsHems_dict)
-        mars_data["Hemispheres"] = build_report(marsHems_report)
+        mars_data["hemispheres"] = mars_news_report.append(marsHems_dict)
         
-        
-        
+                
     return mars_data
 
 #********************************************************************************************************************************************************************************************************************************************************       
-def build_report(mars_report):
-    final_report = ""
-    for p in mars_report:
-        final_report += " " + p.get_text()
-        print(final_report)
-    return final_report
